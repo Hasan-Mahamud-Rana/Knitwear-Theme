@@ -1,0 +1,22 @@
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;" >
+  <div class="sliderBG">
+  <ul class="orbit-container" data-options="bullets: false;">
+		<?php $query = new WP_Query( 'order=asc&category_name=slider&post_status=publish&posts_per_page=6paged='. get_query_var('paged')); ?>
+    	<?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
+  			<li class="orbit-slide" style="height: 404px; background-image: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>)"></li>
+    	<?php endwhile;?>
+		<?php wp_reset_postdata(); else : ?>
+		<?php _e( 'Sorry, no posts matched your criteria.' ); ?>
+		<?php endif; ?>	
+	</ul>
+	</div> 
+<div class="sh_bottom"></div>
+<nav class="orbit-bullets">
+    <button data-slide="0" class="is-active"></button>
+    <button data-slide="1"></button>
+    <button data-slide="2"></button>
+    <button data-slide="3"></button>
+    <button data-slide="4"></button>
+    <button data-slide="5"></button>
+</nav>
+</div> 
